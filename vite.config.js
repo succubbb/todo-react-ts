@@ -5,16 +5,26 @@ import { ViteFaviconsPlugin } from 'vite-plugin-favicon';
 
 export default defineConfig({
   plugins: [
-    react(),
     tailwindcss(),
+    react({
+      fastRefresh: true,
+    }),
     ViteFaviconsPlugin({
       logo: 'public/icons/logo.png',
       inject: true,
     }),
   ],
   server: {
-    open: true, // Автоматически открывает браузер при старте
-    port: 3000, // Порт (по умолчанию 5173)
-    host: true, // Открывает доступ по локальной сети (опционально)
+    open: true,
+    port: 3000,
+    host: true,
+    force: true,
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+  },
+  watch: {
+    usePolling: true, // Для систем, где не работает стандартный watch
+    interval: 1000, // Интервал проверки в мс
   },
 });
