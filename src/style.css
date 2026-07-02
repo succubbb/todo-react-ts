@@ -1,5 +1,5 @@
-@tailwind utilities;
 @import "tailwindcss";
+@tailwind utilities;
 
 @font-face {
     font-family: "Sofia Sans Extra Condensed";
