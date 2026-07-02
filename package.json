@@ -25,6 +25,7 @@
     "vite-plugin-favicon": "^1.0.8"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.3.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
