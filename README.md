@@ -9,10 +9,10 @@
 
 Основывалась на статье https://vk.com/away.php?to=https%3A%2F%2Ftypeofnan.dev%2Fyour-first-react-typescript-project-todo-app%2F&utf=1
 
-    /\_____/\
-   /  o   o  \
-  ( ==  ^  == )
-   )         (
-  (           )
- ( (  )   (  ) )
-(__(__)___(__)__)
+        /\_____/\
+       /  o   o  \
+      ( ==  ^  == )
+       )         (
+      (           )
+     ( (  )   (  ) )
+    (__(__)___(__)__)
