@@ -1,40 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem.tsx';
 import { Todo } from '../types';
 
-const initialTodos: Todo[] = [
-  {
-    id: '1',
-    title: 'New Task',
-    isComplete: true,
-  },
-  {
-    id: '2',
-    title: 'New Task1',
-    isComplete: false,
-  },
-  {
-    id: '3',
-    title: 'New Task2',
-    isComplete: false,
-  },
-];
+interface Props {
+  todos: Todo[];
+  toggleTodo: (id: string) => void;
+  onDelete: (id: string) => void;
+}
 
-const TasksList: React.FC = () => {
-  const [todos, setTodos] = useState(initialTodos);
-
-  const toggleTodo = (id: string) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, isComplete: !todo.isComplete } : todo,
-      ),
-    );
-  };
-
-  const deleteTodo = (id: string) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
-  };
-
+const TasksList: React.FC<Props> = ({ todos, toggleTodo, onDelete }) => {
   const pendingCount = todos.filter((todo) => !todo.isComplete).length;
 
   return (
@@ -43,14 +17,16 @@ const TasksList: React.FC = () => {
         You have {pendingCount} pending {pendingCount === 1 ? 'task' : 'tasks'}
       </div>
 
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          toggleTodo={toggleTodo}
-          onDelete={deleteTodo}
-        />
-      ))}
+      <div className="space-y-2 mt-2">
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            toggleTodo={toggleTodo}
+            onDelete={onDelete}
+          />
+        ))}
+      </div>
     </>
   );
 };

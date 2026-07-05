@@ -38,10 +38,10 @@ const TodoItem: React.FC<Props> = ({ todo, toggleTodo, onDelete }) => {
       {/* Кнопка удаления */}
       <button
         type="button"
-        className="h-full hover:bg-gray-100 cursor-pointer ml-auto"
+        className="h-full cursor-pointer ml-auto" // add hover for icon
         onClick={() => onDelete?.(todo.id)}
       >
-        <TrashIcon className="size-3 text-gray-500" />
+        <TrashIcon className="size-3 text-gray-500 hover:text-gray-700 transition-colors" />
       </button>
     </div>
   );

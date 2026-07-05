@@ -6,3 +6,4 @@ export interface Todo {
 
 export type ToggleTodo = (id: string) => void; // ← теперь принимает id
 export type DeleteTodo = (id: string) => void;
+export type AddTodo = (text: string) => void;
