@@ -11,7 +11,6 @@ interface Props {
 const TodoItem: React.FC<Props> = ({ todo, toggleTodo, onDelete }) => {
   return (
     <div className="flex items-center h-5 w-full max-w-md text-sm text-gray-500 bg-[#ece4db] mt-1 border border-gray-500/30 rounded-xl px-2">
-      {/* Чекбокс */}
       <input
         type="checkbox"
         id="item"
@@ -22,7 +21,6 @@ const TodoItem: React.FC<Props> = ({ todo, toggleTodo, onDelete }) => {
         className="size-2.5 cursor-pointer mr-3"
       />
 
-      {/* Текст */}
       <span
         className={
           todo.isComplete
@@ -32,13 +30,10 @@ const TodoItem: React.FC<Props> = ({ todo, toggleTodo, onDelete }) => {
       >
         {todo.title}
       </span>
-      {/*{todo.isComplete && <CheckIcon className="w-3.5 h-3.5 text-white" />}*/}
-      {/*<CheckIcon className="size-3 text-gray-500" />*/}
 
-      {/* Кнопка удаления */}
       <button
         type="button"
-        className="h-full cursor-pointer ml-auto" // add hover for icon
+        className="h-full cursor-pointer ml-auto"
         onClick={() => onDelete?.(todo.id)}
       >
         <TrashIcon className="size-3 text-gray-500 hover:text-gray-700 transition-colors" />

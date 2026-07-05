@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { AddTodo } from '../types';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 
@@ -9,11 +9,11 @@ interface Props {
 const NewTask: React.FC<Props> = ({ addTodo }) => {
   const [text, setText] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     if (text.trim()) {
       addTodo(text.trim());
-      setText(''); // очищаем поле
+      setText('');
     }
   };
 
