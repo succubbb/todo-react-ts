@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NewTask from './components/NewTask.tsx';
 import TasksList from './components/TasksList.tsx';
 import { AddTodo, Todo } from './types';
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      try {
+        return JSON.parse(savedTodos);
+      } catch (error) {
+        console.error('Error parsing todos from localStorage:', error);
+        return [];
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const toggleTodo = (id: string) => {
     setTodos((prevTodos) =>
@@ -16,7 +31,7 @@ const App: React.FC = () => {
 
   const addTodo: AddTodo = (text: string) => {
     const newTodo: Todo = {
-      id: Date.now().toString(), // ← генерируем уникальный id
+      id: Date.now().toString(),
       title: text,
       isComplete: false,
     };
